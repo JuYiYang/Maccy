@@ -37,8 +37,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // Bridge FloatingPanel via AppDelegate.
     AppState.shared.appDelegate = self
 
-    Clipboard.shared.onNewCopy { History.shared.add($0) }
+    Clipboard.shared.onNewCopy { item in
+      let addedItem = History.shared.add(item)
+      CloudSyncService.shared.uploadNewCopy(addedItem.item)
+    }
     Clipboard.shared.start()
+    CloudSyncService.shared.start()
 
     Task {
       for await _ in Defaults.updates(.clipboardCheckInterval, initial: false) {

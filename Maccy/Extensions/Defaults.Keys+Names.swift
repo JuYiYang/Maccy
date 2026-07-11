@@ -14,6 +14,13 @@ extension Defaults.Keys {
   static let clearOnQuit = Key<Bool>("clearOnQuit", default: false)
   static let clearSystemClipboard = Key<Bool>("clearSystemClipboard", default: false)
   static let clipboardCheckInterval = Key<Double>("clipboardCheckInterval", default: 0.5)
+  static let cloudSyncDeviceID = Key<String>("cloudSyncDeviceID", default: "")
+  static let cloudSyncEnabled = Key<Bool>("cloudSyncEnabled", default: false)
+  static let cloudSyncLastError = Key<String>("cloudSyncLastError", default: "")
+  static let cloudSyncLastPulledAt = Key<Double>("cloudSyncLastPulledAt", default: 0)
+  static let cloudSyncLastSyncedAt = Key<Double>("cloudSyncLastSyncedAt", default: 0)
+  static let cloudSyncServerURL = Key<String>("cloudSyncServerURL", default: "")
+  static let cloudSyncToken = Key<String>("cloudSyncToken", default: "")
   static let enabledPasteboardTypes = Key<Set<NSPasteboard.PasteboardType>>(
     "enabledPasteboardTypes", default: Set(StorageType.all.types)
   )

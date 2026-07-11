@@ -8,3 +8,9 @@
 "ClearHistoryOnQuitTooltip" = "Automatically remove all unpinned items before quitting the application.";
 "ClearSystemClipboard" = "Clear the system clipboard too";
 "ClearSystemClipboardTooltip" = "When enabled, clearing the history would also clear the current system clipboard.";
+
+"CloudSync" = "Cloud sync";
+"CloudSyncDescription" = "Sync copied items with a ClipBridge server. Disabled by default; ignored and filtered clipboard items are never uploaded.";
+"CloudSyncServerURL" = "Server URL";
+"CloudSyncToken" = "Access token";
+"CloudSyncNow" = "Sync now";

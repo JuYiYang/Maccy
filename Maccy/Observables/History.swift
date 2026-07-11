@@ -111,6 +111,7 @@ class History: ItemsContainer { // swiftlint:disable:this type_body_length
     limitHistorySize(to: Defaults[.size])
 
     updateShortcuts()
+    CloudSyncService.shared.historyDidLoad()
     // Ensure that panel size is proper *after* loading all items.
     Task {
       AppState.shared.popup.needsResize = true
