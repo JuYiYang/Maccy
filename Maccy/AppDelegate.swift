@@ -1,10 +1,12 @@
 import Defaults
+import Darwin
 import KeyboardShortcuts
 import Sparkle
 import SwiftUI
 
 class AppDelegate: NSObject, NSApplicationDelegate {
   var panel: FloatingPanel<ContentView>!
+  private var singleInstanceLockFD: Int32 = -1
 
   @objc
   private lazy var statusItem: NSStatusItem = {
@@ -24,6 +26,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   private var statusItemVisibilityObserver: NSKeyValueObservation?
 
   func applicationWillFinishLaunching(_ notification: Notification) { // swiftlint:disable:this function_body_length
+    guard acquireSingleInstanceLock() else {
+      NSApp.terminate(nil)
+      return
+    }
+
     #if DEBUG
     if CommandLine.arguments.contains("enable-testing") {
       SPUUpdater(hostBundle: Bundle.main,
@@ -115,6 +122,33 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     if Defaults[.clearOnQuit] {
       AppState.shared.history.clear()
     }
+    releaseSingleInstanceLock()
+  }
+
+  private func acquireSingleInstanceLock() -> Bool {
+    let lockPath = (NSTemporaryDirectory() as NSString).appendingPathComponent("app.clipbridge.macos.lock")
+    let fd = open(lockPath, O_CREAT | O_RDWR, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)
+    guard fd >= 0 else {
+      return true
+    }
+
+    if flock(fd, LOCK_EX | LOCK_NB) != 0 {
+      close(fd)
+      return false
+    }
+
+    singleInstanceLockFD = fd
+    return true
+  }
+
+  private func releaseSingleInstanceLock() {
+    guard singleInstanceLockFD >= 0 else {
+      return
+    }
+
+    flock(singleInstanceLockFD, LOCK_UN)
+    close(singleInstanceLockFD)
+    singleInstanceLockFD = -1
   }
 
   private func migrateUserDefaults() {
