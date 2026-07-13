@@ -1,0 +1,13 @@
+"Title" = "云端";
+"CloudSync" = "云端同步";
+"CloudSyncDescription" = "将复制记录同步到 ClipBridge 服务端。默认关闭；被忽略或过滤的剪贴板内容不会上传。";
+"Connection" = "连接";
+"ServerURL" = "服务地址";
+"AccessToken" = "访问 Token";
+"AccessTokenDescription" = "会作为 Bearer Token 发送给 ClipBridge 服务端。";
+"Schedule" = "同步时间";
+"ScheduleDescription" = "程序运行期间捕获到的新剪贴板内容仍会立即上传。";
+"Status" = "状态";
+"SyncNow" = "立即同步";
+"Device" = "设备";
+"DeviceIDPending" = "启动后自动生成";

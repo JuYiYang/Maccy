@@ -141,6 +141,13 @@ class AppState: Sendable {
               .modelContainer(Storage.shared.container)
           },
           Settings.Pane(
+            identifier: Settings.PaneIdentifier.cloud,
+            title: NSLocalizedString("Title", tableName: "CloudSettings", comment: ""),
+            toolbarIcon: NSImage.cloud!
+          ) {
+            CloudSettingsPane()
+          },
+          Settings.Pane(
             identifier: Settings.PaneIdentifier.ignore,
             title: NSLocalizedString("Title", tableName: "IgnoreSettings", comment: ""),
             toolbarIcon: NSImage.nosign!

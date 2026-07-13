@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CB1000012FA0000000000001 /* CloudSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1000002FA0000000000001 /* CloudSyncService.swift */; };
+		CB2000012FA1000000000001 /* CloudSettingsPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2000002FA1000000000001 /* CloudSettingsPane.swift */; };
+		CB2000022FA1000000000001 /* CloudSettings.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB2000032FA1000000000001 /* CloudSettings.strings */; };
 		0ABDD5122BB47F1E0054963B /* NSWorkspace+ApplicationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABDD5112BB47F1E0054963B /* NSWorkspace+ApplicationName.swift */; };
 		2F0EC7792E7727E3003E2EA9 /* HeightReaderModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0EC7782E7727E3003E2EA9 /* HeightReaderModifier.swift */; };
 		2F0EC77B2E772899003E2EA9 /* PinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0EC77A2E772899003E2EA9 /* PinsView.swift */; };
@@ -180,6 +182,9 @@
 
 /* Begin PBXFileReference section */
 		CB1000002FA0000000000001 /* CloudSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudSyncService.swift; sourceTree = "<group>"; };
+		CB2000002FA1000000000001 /* CloudSettingsPane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudSettingsPane.swift; sourceTree = "<group>"; };
+		CB2000042FA1000000000001 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CloudSettings.strings; sourceTree = "<group>"; };
+		CB2000052FA1000000000001 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/CloudSettings.strings"; sourceTree = "<group>"; };
 		088F4DA628BECBC40003AD19 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0ABDD5112BB47F1E0054963B /* NSWorkspace+ApplicationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWorkspace+ApplicationName.swift"; sourceTree = "<group>"; };
 		1180C7372826B6140086870C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -655,6 +660,8 @@
 				DA740D782C21E6B0007B1A36 /* AdvancedSettings.strings */,
 				DA689FC32C1CF0F00009B887 /* AppearanceSettingsPane.swift */,
 				DA689FCD2C1DEE570009B887 /* AppearanceSettings.strings */,
+				CB2000002FA1000000000001 /* CloudSettingsPane.swift */,
+				CB2000032FA1000000000001 /* CloudSettings.strings */,
 				DAA5ACB12C1B3F8800B58513 /* GeneralSettingsPane.swift */,
 				DAA5ACB32C1B803000B58513 /* GeneralSettings.strings */,
 				DA9C3C632C20E1E80056795D /* IgnoreSettingsPane */,
@@ -1037,6 +1044,7 @@
 				DA20FA742B082E0100056DD5 /* Knock.caf in Resources */,
 				DA009931256411F90030E697 /* appcast.xml in Resources */,
 				DAA5ACB52C1B803000B58513 /* GeneralSettings.strings in Resources */,
+				CB2000022FA1000000000001 /* CloudSettings.strings in Resources */,
 				DA740D7A2C21E6B0007B1A36 /* AdvancedSettings.strings in Resources */,
 				DA689FB02C1CD3B00009B887 /* StorageSettings.strings in Resources */,
 				DA5E62802C39E53F00F4C710 /* PreviewItemView.strings in Resources */,
@@ -1083,6 +1091,7 @@
 				DAB082962A2B7B850053E463 /* AppStoreReview.swift in Sources */,
 				2FB5BCA02CD8F73F008B33F4 /* ApplicationImage.swift in Sources */,
 				DA13D7D22C19F91B00FA9E23 /* Defaults.Keys+Names.swift in Sources */,
+				CB2000012FA1000000000001 /* CloudSettingsPane.swift in Sources */,
 				2F0EC77D2E773314003E2EA9 /* Selection.swift in Sources */,
 				DA1969102C3F0AAC00258481 /* KeyShortcut.swift in Sources */,
 				DA9C3C622C20E1BF0056795D /* IgnoreRegexpsSettingsView.swift in Sources */,
@@ -1199,6 +1208,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		CB2000032FA1000000000001 /* CloudSettings.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CB2000042FA1000000000001 /* en */,
+				CB2000052FA1000000000001 /* zh-Hans */,
+			);
+			name = CloudSettings.strings;
+			sourceTree = "<group>";
+		};
 		4762D6992467226100B3A2BA /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

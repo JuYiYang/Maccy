@@ -58,6 +58,7 @@ final class CloudSyncService {
   static let shared = CloudSyncService()
 
   private var configurationTask: Task<Void, Never>?
+  private var periodicSyncTask: Task<Void, Never>?
   private var syncTask: Task<Void, Never>?
 
   private var isConfigured: Bool {
@@ -81,6 +82,7 @@ final class CloudSyncService {
     configurationTask = Task {
       await observeConfigurationChanges()
     }
+    schedulePeriodicSync()
   }
 
   private func ensureDeviceID() {
@@ -114,11 +116,13 @@ final class CloudSyncService {
     await withTaskGroup(of: Void.self) { group in
       group.addTask {
         for await _ in Defaults.updates(.cloudSyncEnabled, initial: false) {
+          self.schedulePeriodicSync()
           self.syncNow()
         }
       }
       group.addTask {
         for await _ in Defaults.updates(.cloudSyncServerURL, initial: false) {
+          self.schedulePeriodicSync()
           self.syncNow()
         }
       }
@@ -126,6 +130,25 @@ final class CloudSyncService {
         for await _ in Defaults.updates(.cloudSyncToken, initial: false) {
           self.syncNow()
         }
+      }
+      group.addTask {
+        for await _ in Defaults.updates(.cloudSyncIntervalSeconds, initial: false) {
+          self.schedulePeriodicSync()
+        }
+      }
+    }
+  }
+
+  private func schedulePeriodicSync() {
+    periodicSyncTask?.cancel()
+    guard isConfigured else { return }
+
+    let interval = max(15, Defaults[.cloudSyncIntervalSeconds])
+    periodicSyncTask = Task { [weak self] in
+      while !Task.isCancelled {
+        try? await Task.sleep(nanoseconds: UInt64(interval) * 1_000_000_000)
+        guard !Task.isCancelled else { return }
+        self?.syncNow()
       }
     }
   }

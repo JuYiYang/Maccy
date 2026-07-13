@@ -1,0 +1,13 @@
+"Title" = "Cloud";
+"CloudSync" = "Cloud sync";
+"CloudSyncDescription" = "Sync copied items with a ClipBridge server. Disabled by default; ignored and filtered clipboard items are never uploaded.";
+"Connection" = "Connection";
+"ServerURL" = "Server URL";
+"AccessToken" = "Access token";
+"AccessTokenDescription" = "Used as the Bearer token sent to the ClipBridge server.";
+"Schedule" = "Schedule";
+"ScheduleDescription" = "ClipBridge also uploads new copies immediately while the app is running.";
+"Status" = "Status";
+"SyncNow" = "Sync now";
+"Device" = "Device";
+"DeviceIDPending" = "Generated automatically after launch";

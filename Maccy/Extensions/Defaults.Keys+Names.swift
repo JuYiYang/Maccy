@@ -16,6 +16,7 @@ extension Defaults.Keys {
   static let clipboardCheckInterval = Key<Double>("clipboardCheckInterval", default: 0.5)
   static let cloudSyncDeviceID = Key<String>("cloudSyncDeviceID", default: "")
   static let cloudSyncEnabled = Key<Bool>("cloudSyncEnabled", default: false)
+  static let cloudSyncIntervalSeconds = Key<Int>("cloudSyncIntervalSeconds", default: 300)
   static let cloudSyncLastError = Key<String>("cloudSyncLastError", default: "")
   static let cloudSyncLastPulledAt = Key<Double>("cloudSyncLastPulledAt", default: 0)
   static let cloudSyncLastSyncedAt = Key<Double>("cloudSyncLastSyncedAt", default: 0)
