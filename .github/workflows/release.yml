@@ -1,0 +1,54 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: macos-15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Release app
+        run: |
+          xcodebuild \
+            -project Maccy.xcodeproj \
+            -scheme Maccy \
+            -configuration Release \
+            -derivedDataPath work/DerivedDataRelease \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+
+      - name: Package app
+        run: |
+          ditto -c -k --keepParent \
+            work/DerivedDataRelease/Build/Products/Release/ClipBridge.app \
+            ClipBridge-macOS-Release.zip
+
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ClipBridge-macOS-Release
+          path: ClipBridge-macOS-Release.zip
+
+      - name: Publish GitHub Release asset
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" ClipBridge-macOS-Release.zip --clobber
+          else
+            gh release create "$TAG" ClipBridge-macOS-Release.zip \
+              --title "$TAG" \
+              --notes "ClipBridge macOS release."
+          fi

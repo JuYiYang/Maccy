@@ -40,7 +40,11 @@ clipbridge currently works on macOS Sonoma 14 or higher.
 
 ## Install
 
-Download the latest version from the [releases](https://github.com/p0deje/Maccy/releases/latest) page, or use [Homebrew](https://brew.sh/):
+Download the latest version from this fork's GitHub releases when available.
+Local Release packaging and GitHub Release automation are documented in
+[docs/release.md](docs/release.md).
+
+The upstream Maccy release remains available from the [upstream releases](https://github.com/p0deje/Maccy/releases/latest) page, or through [Homebrew](https://brew.sh/):
 
 ```sh
 brew install maccy
