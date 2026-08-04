@@ -37,7 +37,8 @@ work/DerivedDataRelease/Build/Products/Release/ClipBridge-macOS-Release.zip
 
 ## GitHub Release Packaging
 
-The workflow in `.github/workflows/release.yml` builds a Release app and uploads
+The workflow in `.github/workflows/release.yml` builds on GitHub's `macos-26`
+runner so it has the same Xcode 26 SDK family used by this fork. It uploads
 `ClipBridge-macOS-Release.zip` as a workflow artifact.
 
 When a tag matching `v*` is pushed, the workflow also creates or updates a
